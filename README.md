@@ -1,33 +1,68 @@
-# Finance Python Projects
+# Finance Valuation Projects in Python
 
-This repository contains a collection of finance-oriented projects implemented in Python,
-with a focus on corporate finance, valuation, and buy-side / M&A use cases.
+This repository contains a set of corporate finance valuation projects implemented in Python, reflecting methodologies used in investment banking, M&A, and corporate finance.
 
-The objective is to translate standard financial modeling techniques (typically built in Excel)
-into clean, reproducible, and auditable Python code.
+The objective of this repository is to demonstrate:
+- A strong understanding of valuation theory
+- The ability to translate financial reasoning into structured Python code
+- A professional, reproducible approach to financial analysis and reporting
 
----
+Each project is self-contained, documented, and produces automated outputs.
 
-## Projects
+## Projects Overview
 
-### 01 — Comparable Companies Analysis
-A full Comparable Companies (Comps) valuation engine.
+### 01 — Comparable Companies Analysis (Trading Comps)
 
-**Key features:**
-- Enterprise Value computation
-- Trading multiples (EV/Revenue, EV/EBITDA, P/E)
-- Peer set statistics (mean, median)
-- Outlier handling via winsorisation
-- Implied valuation for a target company
-- Valuation range (P25 / P50 / P75)
-- Automated valuation report generation
+A market-based valuation using peer trading multiples.
 
-**Structure:**
-- `data/raw/`        : raw peer financials (excluded from version control)
-- `data/processed/`  : processed outputs with computed multiples
-- `src/`             : core valuation logic
-- `reports/`         : generated valuation summary
+Key features:
+- Peer set construction
+- Computation of EV/Revenue, EV/EBITDA, and P/E multiples
+- Exclusion of the target company from peer statistics
+- Outlier handling through winsorization
+- Summary statistics (mean, median, quartiles)
+- Implied equity valuation and upside/downside analysis
+- Automated output files
 
-Run the project:
-```bash
-python src/compute_multiples.py
+Directory:
+01_comps/
+
+### 02 — Discounted Cash Flow Valuation (DCF)
+
+An intrinsic valuation based on projected free cash flows.
+
+Key features:
+- Bottom-up construction of Free Cash Flows from operating drivers
+- Explicit assumptions on revenue growth, margins, taxes, CAPEX, and working capital
+- WACC computation using CAPM and after-tax cost of debt
+- Terminal value estimation using the Gordon Growth method
+- Enterprise Value to Equity Value bridge
+- Automated DCF valuation report
+
+Directory:
+02_dcf/
+
+## Methodological Notes
+
+Comparable Companies Analysis provides a market-based valuation anchor, while Discounted Cash Flow analysis provides an intrinsic, fundamentals-driven valuation. Differences between the two approaches are expected and are an integral part of valuation interpretation.
+
+In practice, trading comparables are typically used to anchor transaction pricing, while DCFs are used as a sanity check and to assess long-term upside potential.
+
+## Technical Stack
+
+Python 3  
+pandas, numpy  
+Modular project structure  
+Reproducible scripts  
+Automated text-based reporting  
+
+## How to Run the Projects
+
+From the root of the repository:
+
+python 01_comps/src/compute_multiples.py  
+python 02_dcf/src/dcf_valuation.py  
+
+## Disclaimer
+
+These projects are for educational and demonstration purposes only and do not constitute investment advice.
