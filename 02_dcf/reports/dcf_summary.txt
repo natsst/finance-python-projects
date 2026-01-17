@@ -1,0 +1,17 @@
+DISCOUNTED CASH FLOW – SUMMARY
+========================================
+
+1. Valuation Overview
+PV of explicit FCFs: 3,003 m€
+PV of terminal value: 13,399 m€
+Enterprise Value: 16,402 m€
+Net Debt: 600 m€
+Equity Value: 15,802 m€
+
+2. Key Assumptions
+WACC: 6.85%
+Terminal growth: 2.50%
+Net debt: 600 m€
+
+3. Conclusion
+The DCF valuation implies a robust enterprise and equity value. As expected for a 5-year explicit forecast, a significant portion of value is driven by terminal assumptions.
