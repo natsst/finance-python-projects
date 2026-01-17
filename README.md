@@ -1,68 +1,30 @@
-# Finance Valuation Projects in Python
+Finance & Valuation Projects (Python)
+====================================
 
-This repository contains a set of corporate finance valuation projects implemented in Python, reflecting methodologies used in investment banking, M&A, and corporate finance.
+This repository contains finance-driven Python projects focused on company valuation and financial modeling,
+inspired by real-world practices in investment banking, M&A, and corporate finance.
 
-The objective of this repository is to demonstrate:
-- A strong understanding of valuation theory
-- The ability to translate financial reasoning into structured Python code
-- A professional, reproducible approach to financial analysis and reporting
+Projects
+--------
 
-Each project is self-contained, documented, and produces automated outputs.
+01 — Comparable Companies Analysis
+Trading multiples valuation: peer set, EV/Revenue, EV/EBITDA, P/E, implied valuation.
 
-## Projects Overview
+02 — Discounted Cash Flow (DCF) Valuation App
+Interactive DCF web app: FCF build-up, WACC, terminal value, sensitivity, TXT/Excel exports.
 
-### 01 — Comparable Companies Analysis (Trading Comps)
+How to run
+----------
 
-A market-based valuation using peer trading multiples.
+Create a virtual environment and install dependencies:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 
-Key features:
-- Peer set construction
-- Computation of EV/Revenue, EV/EBITDA, and P/E multiples
-- Exclusion of the target company from peer statistics
-- Outlier handling through winsorization
-- Summary statistics (mean, median, quartiles)
-- Implied equity valuation and upside/downside analysis
-- Automated output files
+Run the DCF app:
+streamlit run 02_dcf/app.py
 
-Directory:
-01_comps/
+Disclaimer
+----------
 
-### 02 — Discounted Cash Flow Valuation (DCF)
-
-An intrinsic valuation based on projected free cash flows.
-
-Key features:
-- Bottom-up construction of Free Cash Flows from operating drivers
-- Explicit assumptions on revenue growth, margins, taxes, CAPEX, and working capital
-- WACC computation using CAPM and after-tax cost of debt
-- Terminal value estimation using the Gordon Growth method
-- Enterprise Value to Equity Value bridge
-- Automated DCF valuation report
-
-Directory:
-02_dcf/
-
-## Methodological Notes
-
-Comparable Companies Analysis provides a market-based valuation anchor, while Discounted Cash Flow analysis provides an intrinsic, fundamentals-driven valuation. Differences between the two approaches are expected and are an integral part of valuation interpretation.
-
-In practice, trading comparables are typically used to anchor transaction pricing, while DCFs are used as a sanity check and to assess long-term upside potential.
-
-## Technical Stack
-
-Python 3  
-pandas, numpy  
-Modular project structure  
-Reproducible scripts  
-Automated text-based reporting  
-
-## How to Run the Projects
-
-From the root of the repository:
-
-python 01_comps/src/compute_multiples.py  
-python 02_dcf/src/dcf_valuation.py  
-
-## Disclaimer
-
-These projects are for educational and demonstration purposes only and do not constitute investment advice.
+Educational / demonstration purposes only. Not investment advice.
