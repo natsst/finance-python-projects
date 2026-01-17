@@ -1,73 +1,79 @@
-# Discounted Cash Flow Valuation (DCF)
+Discounted Cash Flow (DCF) Valuation App
+=======================================
 
-This project implements a Discounted Cash Flow (DCF) valuation model in Python, following a methodology consistent with investment banking, M&A, and corporate finance practices.
+This project implements a full Discounted Cash Flow (DCF) valuation model in Python,
+exposed through an interactive web application built with Streamlit.
 
-The objective is to estimate the intrinsic value of a company based on projected free cash flows, independent of current market multiples.
+The objective is to reproduce a professional corporate finance DCF workflow,
+with explicit assumptions, transparent cash flow build-up, and decision-oriented outputs.
 
-## Objective
+Key Features
+------------
 
-- Build an intrinsic valuation based on operating fundamentals
-- Replicate a bank-ready DCF methodology in Python
-- Clearly separate assumptions, cash flow construction, discounting, and valuation
-- Produce reproducible and automated valuation outputs
+- explicit 5–10 year Free Cash Flow (FCF) forecast,
+- operating build-up:
+  - revenue growth,
+  - EBIT margin,
+  - taxes,
+  - D&A, CAPEX, and working capital,
+- WACC computation (CAPM-based),
+- terminal value using Gordon Growth,
+- enterprise value to equity bridge,
+- sensitivity analysis (WACC × terminal growth),
+- exportable outputs (TXT / Excel),
+- interactive web interface.
 
-## Scope of the Analysis
+Project Structure
+-----------------
 
-The analysis includes the following components:
+data/
+- assumptions.py : centralised financial assumptions
 
-- Bottom-up construction of Free Cash Flows (FCF)
-- Explicit projection of revenues, margins, taxes, CAPEX, and working capital
-- WACC computation using:
-  - CAPM for cost of equity
-  - After-tax cost of debt
-  - Target capital structure
-- Terminal value estimation using the Gordon Growth method
-- Discounting of explicit cash flows and terminal value
-- Enterprise Value to Equity Value bridge
-- Automated generation of a DCF summary report
+src/
+- fcf_build.py   : FCF forecast logic
+- wacc.py        : WACC computation
+- dcf_valuation.py : standalone DCF valuation engine
 
-## Methodology
+app.py
+- Streamlit web application
 
-### Free Cash Flow Construction
+reports/
+- exported valuation summaries
 
-Free Cash Flows are built using the standard operating approach:
+How to Run
+----------
 
-FCF = EBIT × (1 − Tax) + D&A − CAPEX − ΔNWC
+1. Activate the virtual environment:
+   
+   source .venv/bin/activate
 
-All drivers are explicitly modeled and parameterized through assumptions.
+2. Launch the application:
 
-### Discount Rate (WACC)
+   streamlit run app.py
 
-The discount rate is derived from a standard WACC framework:
+3. Open the browser at:
 
-- Cost of equity calculated using CAPM
-- Cost of debt adjusted for taxes
-- Weighted average based on target capital structure
+   http://localhost:8501
 
-### Terminal Value
+Usage
+-----
 
-The terminal value is calculated using the Gordon Growth formula:
+Users can:
+- adjust operating and valuation assumptions,
+- instantly recompute valuation outputs,
+- visualize cash flows and valuation bridges,
+- download valuation reports and Excel models.
 
-TV = FCFₙ × (1 + g) / (WACC − g)
+Methodology Notes
+-----------------
 
-The terminal value is discounted back to present value and represents the continuation value beyond the explicit forecast period.
+- Free Cash Flows are discounted at WACC.
+- Terminal value is computed using the Gordon Growth formula.
+- A large portion of value is driven by terminal assumptions, as in real-world DCFs.
+- The model is designed for clarity, auditability, and extensibility.
 
-### Enterprise to Equity Bridge
+Disclaimer
+----------
 
-Enterprise Value is converted to Equity Value by subtracting net debt, providing the implied equity valuation.
-
-## Outputs
-
-An automated valuation summary is generated at:
-
-reports/dcf_summary.txt
-
-## How to Run
-
-From the root of the repository:
-
-python 02_dcf/src/dcf_valuation.py
-
-## Notes
-
-This project is intended for educational and demonstration purposes and illustrates a structured and professional implementation of an intrinsic valuation model commonly used in investment banking and M&A.
+This project is for educational and demonstration purposes only.
+It does not constitute investment advice.
