@@ -1,0 +1,23 @@
+COMPARABLE COMPANIES ANALYSIS – SUMMARY
+=============================================
+
+1. Peer Set Overview
+Number of peers (ex Target): 5
+
+2. Trading Multiples (Peers)
+EV / Revenue (median): 0.98x
+EV / EBITDA  (median): 5.15x
+P/E          (median): 10.98x
+
+3. Implied Valuation – Base Case (EV / EBITDA median)
+Implied Enterprise Value : 5,153 m€
+Implied Equity Value     : 4,553 m€
+Current Market Cap       : 4,000 m€
+Upside / (Downside)      : 13.8%
+
+4. Valuation Range (Winsorized P25 / P50 / P75)
+Equity Value Range (m€): 4,318 / 4,553 / 4,678
+Upside Range (%): 8.0% / 13.8% / 16.9%
+
+5. Conclusion
+Based on peer median EV/EBITDA multiples, the target company appears moderately undervalued relative to the market, with a positive upside in the base and upper quartile scenarios.

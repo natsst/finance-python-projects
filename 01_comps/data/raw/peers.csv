@@ -1,0 +1,7 @@
+company,ticker,currency,market_cap_m,net_debt_m,revenue_ltm_m,ebitda_ltm_m,net_income_ltm_m
+Alpha SA,ALPH,EUR,5200,800,6100,1220,540
+Beta Group,BETA,EUR,3100,450,4200,760,280
+Gamma PLC,GAMM,EUR,8900,1200,9800,1960,820
+Delta NV,DELT,EUR,2100,150,2500,380,120
+Epsilon SE,EPSI,EUR,6700,900,7200,1440,610
+TargetCo,TGT,EUR,4000,600,5000,1000,450
