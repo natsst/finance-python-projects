@@ -198,6 +198,7 @@ with col1:
 
 with col2:
     st.subheader("DCF Output")
+    sensi = None
     try:
         fcfs = fcf_df["FCF"].astype(float).tolist()
         pv_fcfs = float(sum(discount(fcfs, wacc)))
@@ -238,16 +239,11 @@ with col2:
             mime="text/plain",
         )
 
-                # Excel download (FCF + Valuation, Sensitivity optional)
-        sensi = None
-        sensi_for_export = None
-        if "sensi" in locals():
-            sensi_for_export = sensi.copy()
-
+        # Excel download (FCF + Valuation, Sensitivity optional)
         excel_bytes = build_dcf_excel_bytes(
             fcf_df=fcf_df.round(2),
             valuation_df=out.round(2),
-            sensi_df=None if sensi_for_export is None else sensi_for_export.round(0),
+            sensi_df=None if sensi is None else sensi.round(0),
         )
 
         st.download_button(
