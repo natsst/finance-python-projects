@@ -1,79 +1,145 @@
-Discounted Cash Flow (DCF) Valuation App
-=======================================
+# Discounted Cash Flow (DCF) — Interactive Valuation Model
 
-This project implements a full Discounted Cash Flow (DCF) valuation model in Python,
-exposed through an interactive web application built with Streamlit.
+This project is a **fully interactive Discounted Cash Flow (DCF) valuation model**
+built in Python using **Streamlit**, designed to replicate a **professional
+corporate finance valuation workflow**.
 
-The objective is to reproduce a professional corporate finance DCF workflow,
-with explicit assumptions, transparent cash flow build-up, and decision-oriented outputs.
+It allows users to dynamically modify assumptions, visualize cash flow forecasts,
+run sensitivity analyses, and export results in **Excel-ready format**.
 
-Key Features
-------------
+---
 
-- explicit 5–10 year Free Cash Flow (FCF) forecast,
-- operating build-up:
-  - revenue growth,
-  - EBIT margin,
-  - taxes,
-  - D&A, CAPEX, and working capital,
-- WACC computation (CAPM-based),
-- terminal value using Gordon Growth,
-- enterprise value to equity bridge,
-- sensitivity analysis (WACC × terminal growth),
-- exportable outputs (TXT / Excel),
-- interactive web interface.
+## Objective
 
-Project Structure
------------------
+The objective of this project is to:
+- Build a clean and transparent DCF model
+- Separate operating assumptions from valuation mechanics
+- Allow real-time interaction with key value drivers
+- Replicate standards used in **M&A, Private Equity, and Equity Research**
 
-data/
-- assumptions.py : centralised financial assumptions
+The model follows a **Gordon Growth terminal value approach** and computes both
+Enterprise Value and Equity Value.
 
-src/
-- fcf_build.py   : FCF forecast logic
-- wacc.py        : WACC computation
-- dcf_valuation.py : standalone DCF valuation engine
+---
 
-app.py
-- Streamlit web application
+## Core Features
 
-reports/
-- exported valuation summaries
+### Operating Forecast
+- Multi-year revenue forecast
+- EBIT margin-based operating model
+- Automatic computation of:
+  - NOPAT
+  - Depreciation & Amortization
+  - CAPEX
+  - Net Working Capital variation
+- Free Cash Flow (FCF) build-up displayed year by year
 
-How to Run
-----------
+---
 
-1. Activate the virtual environment:
-   
-   source .venv/bin/activate
+### Discount Rate (WACC)
+- Option to use a model-based WACC computed in `src/wacc.py`
+- Manual WACC override available in the interface
+- WACC is consistently applied across explicit period and terminal value
 
-2. Launch the application:
+---
 
-   streamlit run app.py
+### Terminal Value
+- Terminal Value computed using **Gordon Growth**
+- Built-in guardrails preventing invalid configurations (WACC ≤ g)
 
-3. Open the browser at:
+---
 
-   http://localhost:8501
+### Valuation Output
+The app computes and displays:
+- Present Value of explicit FCFs
+- Present Value of Terminal Value
+- Enterprise Value
+- Net Debt
+- Equity Value
 
-Usage
------
+A **waterfall chart** illustrates the bridge from Enterprise Value to Equity Value.
 
-Users can:
-- adjust operating and valuation assumptions,
-- instantly recompute valuation outputs,
-- visualize cash flows and valuation bridges,
-- download valuation reports and Excel models.
+---
 
-Methodology Notes
------------------
+### Sensitivity Analysis
+- Interactive **WACC × Terminal Growth (g)** sensitivity table
+- Displays Equity Value outcomes
+- Invalid combinations (WACC ≤ g) are automatically excluded
 
-- Free Cash Flows are discounted at WACC.
-- Terminal value is computed using the Gordon Growth formula.
-- A large portion of value is driven by terminal assumptions, as in real-world DCFs.
-- The model is designed for clarity, auditability, and extensibility.
+---
 
-Disclaimer
-----------
+### Charts & Visualization
+- Free Cash Flow forecast chart
+- Revenue forecast chart
+- EV → Equity waterfall chart
 
-This project is for educational and demonstration purposes only.
-It does not constitute investment advice.
+All charts update dynamically based on user inputs.
+
+---
+
+### Exports
+The app allows downloading:
+- A textual DCF summary report (`.txt`)
+- A structured Excel DCF model (`.xlsx`) including:
+  - FCF forecast
+  - Valuation summary
+  - Sensitivity analysis (if activated)
+
+---
+
+## Assumptions Handling
+
+Default assumptions are stored in:
+
+02_dcf/src/data/assumptions.py
+
+This allows:
+- Clean separation between logic and assumptions
+- Easy modification without touching the app logic
+- Reproducibility of valuation scenarios
+
+---
+
+## How to Run the App
+
+From the repository root:
+
+./run_finance_apps.command
+
+Then select:
+
+2) Discounted Cash Flow (DCF)
+
+The app will automatically open in your browser.
+
+Alternatively, run directly:
+
+streamlit run 02_dcf/app.py --server.port 8502
+
+---
+
+## Project Structure
+
+02_dcf/
+├── app.py
+├── src/
+│   ├── wacc.py
+│   └── data/
+│       └── assumptions.py
+└── README.md
+
+---
+
+## Methodology Notes
+
+- All monetary values are expressed in **EUR millions**
+- Terminal Value is discounted back to present value using WACC
+- The model is deterministic and assumption-driven
+- Designed for clarity, auditability, and interview readiness
+
+---
+
+## Disclaimer
+
+This project is for **educational and demonstration purposes only**.
+It does not constitute investment advice, valuation advice, or a fairness opinion.
